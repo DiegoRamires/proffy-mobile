@@ -5,7 +5,11 @@ import PageHeader from "../../components/PageHeader";
 import TeacherItem from "../../components/TeacherItem";
 
 import styles from "./styles";
-import { TextInput, BorderlessButton } from "react-native-gesture-handler";
+import {
+  TextInput,
+  BorderlessButton,
+  RectButton,
+} from "react-native-gesture-handler";
 
 function TeacherList() {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
@@ -40,6 +44,10 @@ function TeacherList() {
                 <TextInput style={styles.input} placeholder='Qual o horário?' />
               </View>
             </View>
+
+            <RectButton style={styles.submitButton}>
+              <Text style={styles.submitButtonText}>Filtrar</Text>
+            </RectButton>
           </View>
         )}
       </PageHeader>

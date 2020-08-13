@@ -7,7 +7,7 @@ const style = StyleSheet.create({
   },
 
   teacherList: {
-    marginTop: -20,
+    marginTop: -30,
   },
 
   searchForm: {
@@ -20,7 +20,7 @@ const style = StyleSheet.create({
   },
 
   input: {
-    height: 54,
+    height: 37,
     backgroundColor: "#FFF",
     borderRadius: 8,
     justifyContent: "center",
@@ -40,7 +40,7 @@ const style = StyleSheet.create({
 
   submitButton: {
     backgroundColor: "#04d361",
-    height: 56,
+    height: 37,
     borderRadius: 8,
     flexDirection: "row",
     justifyContent: "center",
