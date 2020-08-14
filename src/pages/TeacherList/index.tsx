@@ -13,6 +13,7 @@ import {
   BorderlessButton,
   RectButton,
 } from "react-native-gesture-handler";
+import { useFocusEffect } from "@react-navigation/native";
 
 function TeacherList() {
   const [teachers, setTeachers] = useState([]);
@@ -37,6 +38,10 @@ function TeacherList() {
       }
     });
   }
+
+  useFocusEffect(() => {
+    loadFavorites();
+  });
 
   function handleToggleFiltersVisible() {
     setIsFilterVisible(!isFilterVisible);
