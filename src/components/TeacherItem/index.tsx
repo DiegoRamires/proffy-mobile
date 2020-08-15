@@ -7,7 +7,7 @@ import heartOutlineIcon from "../../assets/images/icons/heart-outline.png";
 import unfavoriteIcon from "../../assets/images/icons/unfavorite.png";
 import whatsappIcon from "../../assets/images/icons/whatsapp.png";
 import { RectButton } from "react-native-gesture-handler";
-import Favorites from "../../pages/Favorites";
+import api from "../../services/api";
 
 export interface Teacher {
   id: number;
@@ -16,7 +16,7 @@ export interface Teacher {
   cost: number;
   name: string;
   subject: string;
-  whatsapp: string;
+  whatsapp: number;
 }
 
 interface TeacherItemProps {
@@ -27,9 +27,15 @@ interface TeacherItemProps {
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
   const [isFavorited, setIsFavorited] = useState(favorited);
 
+  let message = `Olá ${teacher.name}, vi seu contato na plataforma Proffy e gostaria de marcar uma aula de ${teacher.subject}`;
+
   function handleLinkToWhatsapp() {
+    api.post("connections", {
+      user_id: teacher.id,
+    });
+
     Linking.openURL(
-      `whatsapp://send?text=Olá ${teacher.name} vi seu perfil na plataforma. gostaria de marcar um horário&phone=${teacher.whatsapp}`
+      `whatsapp://send?phone=55${teacher.whatsapp}&text=${message}`
     );
   }
 
@@ -83,9 +89,9 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
             style={[styles.favoriteButton, isFavorited ? styles.favorited : {}]}
           >
             {isFavorited ? (
-              <Image source={heartOutlineIcon} />
-            ) : (
               <Image source={unfavoriteIcon} />
+            ) : (
+              <Image source={heartOutlineIcon} />
             )}
           </RectButton>
 
